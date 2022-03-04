@@ -72,19 +72,38 @@ class Login{
     public function acessoVeiculo(int $idUsuario, string $idVeiculo, $entrada){
         $cadastrar = $this->mysql->prepare("INSERT INTO entrada (`idUsuario`, `idVeiculo`, `Entrada`) VALUES (?,?,?);");
         $cadastrar->bind_param('sss', $idUsuario, $idVeiculo, $entrada);
-        $cadastrar->execute();
-        $numID = $this->mysql->prepare("SELECT LAST_INSERT_ID();");
-        $numID->execute();
+        $cadastrar->execute();   
 
-        return $numID; 
+        return $cadastrar; 
     }
 
 
-    public function saidaVeiculo(int $idAcesso, $saida){
-        $cadastrar = $this->mysql->prepare("UPDATE `entrada` SET `Saida` = ? WHERE `idAcesso` = ?;");
-        $cadastrar->bind_param('ss', $saida, $idAcesso );
-        return $cadastrar->execute();
+    public function saidaVeiculo(int $idAcesso, string $saida)
+    {
+        $sair = $this->mysql->prepare("UPDATE entrada SET Saida = ? WHERE idAcesso = ?;");
+        $sair->bind_param('ss', $saida, $idAcesso);
+        $sair->execute();
     }
+
+    public function buscaAcesso(string $idUsuario, string $idVeiculo)
+    {
+        $buscar = $this->mysql->prepare("SELECT idAcesso FROM `entrada` WHERE idUsuario = ? and idVeiculo = ? and Saida IS NULL;");
+        $buscar->bind_param('ss', $idUsuario, $idVeiculo);
+        $buscar->execute();
+        $result = $buscar->get_result()->fetch_column(0);
+        
+        return $result;
+    }
+
+    public function buscaHorario(string $idAcesso){
+        $buscar = $this->mysql->prepare("SELECT Entrada FROM `entrada` WHERE idAcesso = ?;");
+        $buscar->bind_param('s', $idAcesso);
+        $buscar->execute();
+        $result = $buscar->get_result()->fetch_column(0);
+        
+        return $result;
+    }
+
 
 
 }

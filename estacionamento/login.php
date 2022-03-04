@@ -26,7 +26,7 @@ if($_SESSION['tentativas']>3){
 <html lang="pt-br">
 
 <head>
-    <title>Prova</title>
+    <title>Login</title>
     <meta charset="UTF-8">
 </head>
 
@@ -37,7 +37,7 @@ if($_SESSION['tentativas']>3){
             <p>
                 <form action="entrar.php" method="POST">
                     login: <input type="text" name="login"><br>
-                    senha: <input type="text" name="senha"><br><br>
+                    senha: <input type="password" name="senha"><br><br>
                     
                     <button type = "submit">
                         Entrar

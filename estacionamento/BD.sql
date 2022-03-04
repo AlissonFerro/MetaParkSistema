@@ -17,8 +17,8 @@ PRIMARY KEY
 
 CREATE TABLE Veiculo(
 	`idVeiculo` int AUTO_INCREMENT NOT NULL,
-	`Marca` varchar NOT NULL,
-	`Modelo` varchar NOT NULL,
+	`Marca` varchar(30) NOT NULL,
+	`Modelo` varchar(30) NOT NULL,
 	`Placa` varchar(8),
 	`idUsuario` int,
 	PRIMARY KEY (
@@ -37,8 +37,8 @@ CREATE TABLE Entrada(
 	`idAcesso` int AUTO_INCREMENT NOT NULL, 
 	`idUsuario` int,
 	`idVeiculo` int,
-	`Entrada` datetime NOT NULL,
-	`Saida` datetime,
+	`Entrada` varchar(20) NOT NULL,
+	`Saida` varchar(20),
 	PRIMARY KEY (
 		`idAcesso` ASC
 	)
@@ -60,3 +60,4 @@ INSERT INTO Veiculo (`Marca`, `Modelo`, `Placa`, `idUsuario`)  VALUES ('Toyota',
 INSERT INTO Veiculo (`Marca`, `Modelo`, `Placa`, `idUsuario`)  VALUES ('Toyota', 'Hilux','HQC1626',4);
 
 
+SELECT idAcesso FROM `entrada` WHERE idUsuario = 1 and idVeiculo = 0 and Saida IS NULL;
