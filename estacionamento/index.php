@@ -46,7 +46,6 @@ $veiculo = $login->veiculoPorId($_SESSION['idUsuario']);
 
         <p>
             <a class="botao botao-block" id="cadastrar" href="cadastrarVeiculo.php">Cadastrar Veículo</a><br>
-            <a class="botao botao-block" id="prova" href="formaDePagamento.php">Forma de pagamento</a>
         </p>
 
     </div>

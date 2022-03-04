@@ -14,11 +14,6 @@ if(!isset($_SESSION['tentativas'])){
     $_SESSION['tentativas'] = 0;
 }
 
-if($_SESSION['tentativas']>3){
-    echo 'fim';
-    $_SESSION['tentativas'] = 0;
-    header('Location: /estacionamento/redefinirSenha.php');
-}
 
 ?>
 

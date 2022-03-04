@@ -23,7 +23,7 @@
             Placa<br>
             <textarea rows="1" cols="20" name="placa"></textarea><br>
 
-            <button class="botao botao-block" href="cadastrar1.php">Cadastrar</button><br><br>
+            <button class="botao botao-block" href="cadastrar.php">Cadastrar</button><br><br>
         </form>
 
         <a href="index.php">Voltar</a>
