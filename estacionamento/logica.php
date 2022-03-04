@@ -1,5 +1,6 @@
 <?php 
-//session_start();
+
+$valorHora = 12;
 
 $mysql = new mysqli('localhost','root','','estacionamento');
 $mysql->set_charset('utf8');

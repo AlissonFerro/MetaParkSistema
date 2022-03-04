@@ -19,9 +19,9 @@ $dateDiff = $dateStart->diff($dateSaida);
 $result = $dateDiff->h . ' horas e ' . $dateDiff->i . ' minutos <br>';
 
 if($dateDiff->h >=1){
-    $valor = $dateDiff->h * 12;
+    $valor = $dateDiff->h * $valorHora;
 }else{
-    $valor = 6;
+    $valor = $valorHora/2;
 }
 echo $result;
 echo "valor a pagar R$ " . $valor . ",00 <br>";
