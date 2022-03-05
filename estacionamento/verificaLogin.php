@@ -77,7 +77,6 @@ class Login{
         return $cadastrar; 
     }
 
-
     public function saidaVeiculo(int $idAcesso, string $saida)
     {
         $sair = $this->mysql->prepare("UPDATE entrada SET Saida = ? WHERE idAcesso = ?;");
@@ -103,6 +102,13 @@ class Login{
         
         return $result;
     }
+
+    public function cadastrarUsuario(string $nome, string $sobrenome, string $cpf, string $login, string $senha)
+    {
+        $cadastrar = $this->mysql->prepare("INSERT INTO usuario (`Nome`, `Sobrenome`, `CPF`, `login`, `senha`)  VALUES (?,?,?,?,?);");
+        $cadastrar->bind_param('sssss', $nome, $sobrenome, $cpf, $login, md5($senha));
+        $cadastrar->execute();
+    }   
 
 
 
